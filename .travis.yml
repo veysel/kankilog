@@ -3,8 +3,10 @@ mono: none
 dist: xenial
 dotnet: 2.2.101
 install:
-  - dotnet restore
+  - dotnet restore kankilog
+  - dotnet restore kankilog.tests
 script:
-  - dotnet build
+  - dotnet build kankilog
+  - dotnet build kankilog.tests
   - dotnet test kankilog.tests/kankilog.tests.csproj
   - dotnet test kankilog.tests/kankilog.tests.csproj /p:CollectCoverage=true
