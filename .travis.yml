@@ -1,0 +1,10 @@
+language: csharp
+mono: none
+dist: xenial
+dotnet: 2.2.101
+install:
+  - dotnet restore
+script:
+  - dotnet build
+  - dotnet test kankilog.tests/kankilog.tests.csproj
+  - dotnet test kankilog.tests/kankilog.tests.csproj /p:CollectCoverage=true
