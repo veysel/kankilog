@@ -5,15 +5,40 @@ Kanki Log
 
 [![Build Status](https://travis-ci.org/veysel/kankilog.svg?branch=main)](https://travis-ci.org/veysel/kankilog)
 
+<br>
 
-## console use
+## How to use ?
 
-- dotnet run
+### Install kankilog
 
-## test command
+```
+Install-Package kankilog
 
-- dotnet test
+or
 
-## test coverage
+dotnet add package kankilog
+```
 
-- dotnet test /p:CollectCoverage=true
+<br>
+
+### Import Project
+
+```c#
+using kankilog;
+```
+
+<br>
+
+### Log Write
+
+```c#
+KankiLog.LogToText(KankiLogType.INFO, "Log text...");
+```
+
+<br>
+
+### Set Main Path (Optional)
+
+```c#
+KankiLog.SetMainPath("logFolder/logs");
+```

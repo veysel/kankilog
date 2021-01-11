@@ -2,6 +2,32 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageId>kankilog</PackageId>
+    <Authors>veysel</Authors>
+    <Company>kankilog</Company>
+    <Description>Kanki Log</Description>
+    <Copyright>kankilog</Copyright>
+    <PackageProjectUrl>https://github.com/veysel/kankilog</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/veysel/kankilog</RepositoryUrl>
+    <PackageIcon>logo.png</PackageIcon>
+    <PackageIconUrl />
+    <PackageTags>log kankilog kanki log</PackageTags>
+    <PackageReleaseNotes>Kanki Log</PackageReleaseNotes>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <Version>1.0.0</Version>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\content\logo.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>
