@@ -4,7 +4,6 @@
 Kanki Log
 
 [![NuGet version](https://badge.fury.io/nu/kankilog.svg)](https://www.nuget.org/packages/kankilog/)
-
 [![Build Status](https://travis-ci.com/veysel/kankilog.svg?branch=main)](https://travis-ci.com/github/veysel/kankilog)
 
 <br>
