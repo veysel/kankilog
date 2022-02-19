@@ -52,5 +52,53 @@ namespace kankilog.tests
             KankiLog.LogToText(KankiLogType.INFO, "test");
             KankiLog.LogToText(KankiLogType.INFO, "test");
         }
+
+        [Theory]
+        [InlineData(true)]
+        [InlineData(false)]
+        public void LogToText_SetIsThrowException(bool isThrowException)
+        {
+            KankiLog.SetIsThrowException(isThrowException);
+        }
+
+        [Fact]
+        public void LogToText_SetIsThrowException_CheckThrowException()
+        {
+            KankiLog.SetMainPath($"logs-{new Random().Next(10000000)}-{new Random().Next(10000000)}");
+            KankiLog.SetIsThrowException(true);
+
+            KankiLog.LogToText(KankiLogType.INFO, "test1");
+            var fs = new System.IO.FileStream(KankiLog.GetLogFilePath(), System.IO.FileMode.Open, System.IO.FileAccess.Read, System.IO.FileShare.None);
+
+            var exception = Record.Exception(() => KankiLog.LogToText(KankiLogType.INFO, "test2"));
+            Assert.NotNull(exception);
+
+            fs.Close();
+        }
+
+        [Fact]
+        public void LogToText_SetIsThrowException_CheckNotThrowException()
+        {
+            KankiLog.SetMainPath($"logs-{new Random().Next(10000000)}-{new Random().Next(10000000)}");
+            KankiLog.SetIsThrowException(false);
+
+            KankiLog.LogToText(KankiLogType.INFO, "test1");
+            var fs = new System.IO.FileStream(KankiLog.GetLogFilePath(), System.IO.FileMode.Open, System.IO.FileAccess.Read, System.IO.FileShare.None);
+            
+            var exception = Record.Exception(() => KankiLog.LogToText(KankiLogType.INFO, "test2"));
+            Assert.Null(exception);
+        }
+
+        [Fact]
+        public void LogToText_SetIsThrowException_CheckNotThrowException_ForDefaultIsThrowException()
+        {
+            KankiLog.SetMainPath($"logs-{new Random().Next(10000000)}-{new Random().Next(10000000)}");
+            
+            KankiLog.LogToText(KankiLogType.INFO, "test1");
+            var fs = new System.IO.FileStream(KankiLog.GetLogFilePath(), System.IO.FileMode.Open, System.IO.FileAccess.Read, System.IO.FileShare.None);
+            
+            var exception = Record.Exception(() => KankiLog.LogToText(KankiLogType.INFO, "test2"));
+            Assert.Null(exception);
+        }
     }
 }

@@ -43,3 +43,11 @@ KankiLog.LogToText(KankiLogType.INFO, "Log text...");
 ```c#
 KankiLog.SetMainPath("logFolder/logs");
 ```
+
+<br>
+
+### Set Is Throw Exception (Optional) (Default: false)
+
+```c#
+KankiLog.SetIsThrowException(true);
+```

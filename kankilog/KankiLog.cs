@@ -8,6 +8,7 @@ namespace kankilog
         private static string LogDateTextFormat = "dd.MM.yyyy HH:mm:ss.fff";
         private static string LogFileNameFormat = "yyyyMMdd";
         private static string MainPath;
+        private static bool IsThrowException = false;
 
         public static string GetMainLogFolderPath()
         {
@@ -26,6 +27,11 @@ namespace kankilog
         public static void SetMainPath(string pathText)
         {
             MainPath = pathText;
+        }
+
+        public static void SetIsThrowException(bool isThrowException)
+        {
+            IsThrowException = isThrowException;
         }
 
         private static void WriteLog(string text)
@@ -51,8 +57,18 @@ namespace kankilog
 
         public static void LogToText(KankiLogType logType, string text)
         {
-            string logText = $"{DateTime.Now.ToString(LogDateTextFormat)} - {logType.ToString()} - {text}";
-            WriteLog(logText);
+            try
+            {
+                string logText = $"{DateTime.Now.ToString(LogDateTextFormat)} - {logType.ToString()} - {text}";
+                WriteLog(logText);
+            }
+            catch (System.Exception exp)
+            {
+                if (IsThrowException)
+                {
+                    throw exp;
+                }
+            }
         }
     }
 }
